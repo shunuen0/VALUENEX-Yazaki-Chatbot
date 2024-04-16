@@ -5,9 +5,9 @@ import openai
 import numpy as np
 
 # Set your OpenAI API key here
-openai.api_key = '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'
+openai.api_key = 'key'
 
-data = pd.read_csv('/Users/shunueno/Desktop/Chatbot /dataset/used/Modified_Book1.csv')
+data = pd.read_csv('path')
 data['search_field'] = data[['category', 'description', 'id item', 'item yazaki pin', 'catalog type', 'cavity family', 'color', 'gender', 'hybrid poles', 'locking', 'pin rows layout', 'poles open', 'sealed', 'temperature max', 'temperature min', 'terminal size', 'total poles']].apply(lambda x: ' '.join(x.dropna().astype(str).str.lower()), axis=1)
 
 vectorizer = TfidfVectorizer(stop_words='english')
@@ -33,14 +33,6 @@ def search(query, previous_results=None):
     # Return the filtered and sorted results
     matching_results = data_subset.iloc[sorted_relevant_indices]
     return matching_results, len(matching_results)
-
-
-def ask_gpt(prompt):
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role":"system","content": "You are an component search AI chatbot for Yazaki Corporation"}, {"role":"system","content": prompt}]
-    )
-    return response.choices[0].message.content
 
 def identify_key_differentiators(top_results):
     """
