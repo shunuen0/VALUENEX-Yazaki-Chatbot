@@ -1,0 +1,13 @@
+category,description,id item,item yazaki pin,catalog type,cavity family,color,gender,hybrid poles,locking,pin rows layout,poles open,sealed,temperature max,temperature min,terminal size,total poles
+connectors,standard connector,96789,7283644950,yazaki catalog part(m),,orange,female,no,side,2,,,85,,1.5,
+connectors,standard connector,317396,7283911280,yazaki catalog part(m),yesc kaizen,,,no,top/standard,,20,unsealed,85,-40,0.64,20
+connectors,connector housing,27016,7123168990,yazaki catalog part(m),other,blue,female,,inertia,2,,unsealed,,-40,,8
+connectors,standard connector,26382,71231280,yazaki catalog part(m),,natural,,no,top/standard,,,,125,-40,2.3,18
+connectors,standard connector,92082,7282128630,yazaki catalog part(m),,black,,yes,mechanical assist,3,,,85,-40,4.8,8
+connectors,standard connector,92916,7282644940,yazaki catalog part(m),,,male,no,side,2,4,unsealed,,,,4
+connectors,standard connector,93023,7282702210,yazaki catalog part(m),090 ii,dark gray,male,no,top/standard,1,,,,,2.3,2
+connectors,standard connector,93598,72828180,yazaki catalog part(m),90,,male,,top/standard,,,unsealed,,-40,2.3,18
+connectors,standard connector,93768,7282885230,yazaki catalog part(m),rh,black,,no,top/standard,,,sealed,85,-40,0.64,3
+connectors,standard connector,96021,7283552930,yazaki catalog part(m),040 iii,,female,no,,,,,125,-40,1,5
+connectors,standard connector,96507,7283607830,yazaki catalog part(m),25,black,female,no,side,1,,sealed,,,0.64,2
+connectors,standard housing,29196,7123602880,yazaki catalog part(m),,brown,,no,inertia,,,unsealed,125,-40,6.3,2
