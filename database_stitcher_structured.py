@@ -7,7 +7,7 @@ import openai
 
 
 # Set your OpenAI API key here
-openai.api_key = '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'
+openai.api_key = 'key'
 
 data1 = pd.read_csv('data1.csv')
 data3 = pd.read_csv('data3.csv')
