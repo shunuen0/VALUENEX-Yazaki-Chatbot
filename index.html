@@ -4,68 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Interface</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Karla', sans-serif;
             margin: 0;
             padding: 10px;
-            background-color: #f4f4f4;
+            background-color: #EAEAEA;
             display: flex;
-            flex-direction: column;
             height: 100vh;
         }
-        #chat-box {
-            border: 1px solid #ccc;
+        #sidebar {
+            width: 200%; /* Adjusted width */
             background-color: #fff;
-            padding: 10px;
-            margin-bottom: 10px;
-            flex-grow: 1;
-            overflow-y: scroll;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 8px 6px rgba(0,0,0,0.2); 
         }
-        #chat-box > div {
-            margin: 5px 0;
-            font-size: 1.2em;
+        #controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; /* Space before the previous chats section */
         }
+        #sidebar img {
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        #main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column; /* Ensures vertical layout */
+            margin-left: 20px;
+        }
+
+        #new-chat {
+            background-color: #ECB6B6;
+            color: #fff;
+            padding: 10px 20px; /* Adjust padding to make less wide */
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.0em;
+            display: flex;        /* Make new-chat a flex container */
+            align-items: center;  /* Vertically center the content */
+            justify-content: center; /* Horizontally center the content */
+            text-align: center;   /* Ensure text alignment is centered if needed */
+            flex-grow: 1;   
+        }
+        #search-button {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px; /* Space from New Chat */
+            background-color: #9E8787;
+            border-radius: 50%;
+            background-image: url('/static/images/magnify.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px 20px;
+            cursor: pointer;
+        }
+        #chat-box {
+            width: 85%;
+            height: 600px;
+            font-family: 'Karla', sans-serif;
+            /* border: 1px solid #ccc; */
+            background-color: #fff;
+            padding: 20px;
+            overflow-y: scroll;
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+            border-radius: 20px;
+            margin-left: 50px; /* Increased from 20px to move it further right */
+            margin-top: 50px; /* New property to move it lower */
+            font-size: 16px; /* Increased font size for chatbox texts */
+            box-shadow: 0 8px 4px rgba(0,0,0,0.2); 
+        }
+        
         form {
             display: flex;
-            margin-top: auto;
+            align-items: center;
+            position: relative; /* Needed for absolute positioning of the button */
+            width: 100%;
         }
         input[type="text"] {
-            flex-grow: 1;
+            width:500px; /* Reduce width to make space for the button */
             height: 40px;
-            font-size: 1.2em;
-            padding: 0 10px;
-            margin-right: 5px;
+            font-family: 'Karla', sans-serif;
+            padding-right: 50px; /* Make padding to not overlap text with the button */
+            padding-left: 10px;
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            margin-left: 250px;
+            margin-top: 20px;
+            margin-right: auto;
+            color: #000;
+            font-size: 16px;
+            box-shadow: 0 8px 6px rgba(0,0,0,0.2); 
         }
         button {
-            width: 100px;
-            height: 46px;
-            font-size: 1.2em;
-            background-color: #007BFF;
-            color: white;
+            position: absolute; /* Position the button over the input field */
+            right: 398px; /* Adjust this based on the total width of the form or sidebar */
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #ECB6B6;
+            background-image: url('/static/images/arrow.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            margin-top: 20px;
             border: none;
             cursor: pointer;
         }
+
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #d19a9a;
         }
     </style>
 </head>
 <body>
-    <h1>Chat with Akai</h1>
-    <div id="chat-box">
-        {% for role, message in chat_history %}
-            <div><strong>{{ role }}:</strong> {{ message }}</div>
-        {% endfor %}
+    <div id="sidebar">
+        <img src="/static/images/v3_751.png" alt="Chat Logo">
+        <div id="controls">
+            <div id="new-chat">+ New chat</div>
+            <div id="search-button"></div>
+        </div>
+        
     </div>
-    <form method="post">
-        <input type="text" name="user_input" placeholder="Type your message here..." autofocus>
-        <button type="submit">Send</button>
-    </form>
+    <div id="main-content">
+        <div id="chat-box">
+            {% for role, message in chat_history %}
+                <div><strong>{{ role }}:</strong> {{ message }}</div>
+            {% endfor %}
+        </div>
+        <form method="post">
+            <input type="text" name="user_input" placeholder="Type your message here..." autofocus>
+            <button type="submit"></button>
+        </form>
+    </div>
 </body>
 </html>
-
