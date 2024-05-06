@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Karla', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #EAEAEA;
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        #sidebar {
+            width: 20%; /* Sidebar takes 25% of the screen width */
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            margin-left: 2%;
+            border-radius: 20px;
+            box-shadow: 0 8px 6px rgba(0,0,0,0.2); 
+        }
+        /*
+        #controls {
+            
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px; 
+            /*flex-wrap: wrap;
+            display: flex;      
+            align-items: center;
+            justify-content: flex-start; /* Aligns children to the start of the flex container 
+
+        } */
+
+        #controls {
+            display: flex;
+            align-items: center;  /* Align items vertically in the center */
+            justify-content: flex-start;  /* Align content to the left */
+            width: 100%;  /* Ensure it takes up the full width of its parent container */
+            margin-bottom: 10px;  /* Optional spacing from the next section */
+        }
+
+        #sidebar img {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 12.5px; 
+        }
+        #main-content {
+            width: 60%; /* Main content area takes 60% of screen width */
+            margin-left: 7%;
+            margin-top: 4%;
+            display: flex;
+            flex-direction: column;
+            margin-right: 2%;
+        }
+        #new-chat {
+            width: 60%; /* Width relative to the sidebar */
+            margin-right: 5px;
+            background-color: #ECB6B6;
+            cursor: pointer;
+        }
+        #search-button {
+            width: 40px;
+            height: 40px;
+            background-color: #9E8787;
+            cursor: pointer;
+        }
+        #chat-box {
+            font-size: 20px; 
+            width: 100%;
+            height: 70vh; /* Chat box height relative to screen */
+            overflow-y: scroll;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 4px rgba(0,0,0,0.2); 
+        }
+        form {
+            display: flex;
+            width: 100%;
+            margin-top: 10px;
+        }
+       
+
+        .new-chat-style {
+            font-family: 'Karla', sans-serif;
+            border-radius: 50px;
+            padding: 10px 20px;
+            flex-grow: 0.8;
+            height: 50px;  /* Set a specific height */
+            font-size: 1.2em;
+            margin-left: 7%;  /* Adjust left margin to center it more within the sidebar */
+            margin-right: 7%;
+            margin-top: 20px;  /* Adjust top margin for spacing */
+            cursor: pointer;
+            text-align: center;
+            background-color: #ECB6B6;
+            color: white;
+            border: none;
+
+        }
+
+        /*
+        .search-button-style {
+            display: block;  /* Ensure it's a block-level element inside the flex container 
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;  /* Space between the new chat button and search icon 
+            margin-top: 20px;
+            background-color: #9E8787;
+            background-image: url('/static/images/magnify.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 25px 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        */
+
+
+        .input-wrapper {
+            position: relative;
+            width: 60%; /* Adjust the width as per requirement */
+            margin-top: 10px;
+            margin-left: 19%; /* Centering the input box */
+            margin-right: 15%;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            padding: 0 50px 0 15px; /* Right padding to avoid overlap with the button */
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .submit-button {
+            position: absolute;
+            right: -60px;  /* Adjust this to position inside the right end of the input box */
+            top: 5px;  /* Center vertically within the input */
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #ECB6B6;
+            background-image: url('/static/images/arrow.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%;  /* Ensure the icon fits the button */
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #d19a9a;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <img src="/static/images/v3_751.png" alt="Chat Logo">
+        <div id="controls">
+            <form action="/clear_session" method="GET" style="margin: 0; padding: 0;">
+                <button id="new-chat" class="new-chat-style">+ New chat</button>
+            </form>
+            
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="chat-box">
+            {% for role, message in chat_history %}
+                <div><strong>{{ role }}:</strong> {{ message }}</div>
+            {% endfor %}
+        </div>
+        <form method="post">
+            <div class="input-wrapper">
+                <input type="text" name="user_input" placeholder="Type your message here..." autofocus>
+                <button type="submit" class="submit-button"></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
