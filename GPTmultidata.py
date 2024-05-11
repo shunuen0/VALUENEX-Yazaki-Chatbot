@@ -23,7 +23,7 @@ def read_excel_data(files):
     return data_frames
 
 def generate_prompt(excel_data, chat_history):
-    prompt = "Your answers from the excel file should be numerically accurate. For example, if the query says 'less than 3', the answer is 0, 1, and 2 but doesn't include 3. Additionally, if there are multiple options, write how many options there are and list their attributes. \n"
+    prompt = "Your answers from the excel file should be numerically accurate. For example, if the query says 'less than 3', the answer is 0, 1, and 2 but doesn't include 3.\n"
 
     # Include the Excel data from all sheets at the beginning of the session or when needed
     for sheet_name, data in excel_data.items():
@@ -55,6 +55,7 @@ def chat_with_rag(user_input):
     prompt = generate_prompt(excel_data, chat_history)
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
+        temperature = 0,
         messages=[{"role": "system", "content": prompt}],
         max_tokens=500
     )
@@ -80,7 +81,8 @@ def home():
                 "Sheet1": "",
                 "Sheet2": "",
                 "Sheet3": "",
-                "Sheet4": ""
+                "Sheet4": "",
+                "Sheet5" : ""
             }
             session['excel_data'] = read_excel_data(excel_files)
         response = chat_with_rag(user_input)
