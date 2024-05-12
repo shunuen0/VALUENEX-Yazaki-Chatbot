@@ -54,7 +54,7 @@ def chat_with_rag(user_input):
 
     prompt = generate_prompt(excel_data, chat_history)
     response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-turbo",
         temperature = 0,
         messages=[{"role": "system", "content": prompt}],
         max_tokens=500
@@ -78,11 +78,11 @@ def home():
         if 'excel_data' not in session:
             # Define the paths for each of your Excel files
             excel_files = {
-                "Sheet1": "",
-                "Sheet2": "",
-                "Sheet3": "",
-                "Sheet4": "",
-                "Sheet5" : ""
+                "Connector Catalog": "",
+                "Fixation Catalog": "",
+                "Connector Attribute Ranking": "",
+                "Fixation Attribute Ranking": "",
+                "Output Rules" : ""
             }
             session['excel_data'] = read_excel_data(excel_files)
         response = chat_with_rag(user_input)
