@@ -25,18 +25,7 @@
             border-radius: 20px;
             box-shadow: 0 8px 6px rgba(0,0,0,0.2); 
         }
-        /*
-        #controls {
-            
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px; 
-            /*flex-wrap: wrap;
-            display: flex;      
-            align-items: center;
-            justify-content: flex-start; /* Aligns children to the start of the flex container 
-
-        } */
+        
 
         #controls {
             display: flex;
@@ -80,7 +69,14 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 8px 4px rgba(0,0,0,0.2); 
+            
+            
         }
+        #chat-box div {
+            margin: 0;
+            padding: 0;
+        }
+        
         form {
             display: flex;
             width: 100%;
@@ -106,22 +102,7 @@
 
         }
 
-        /*
-        .search-button-style {
-            display: block;  /* Ensure it's a block-level element inside the flex container 
-            width: 50px;
-            height: 50px;
-            margin-left: 10px;  /* Space between the new chat button and search icon 
-            margin-top: 20px;
-            background-color: #9E8787;
-            background-image: url('/static/images/magnify.png');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 25px 25px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        */
+        
 
 
         .input-wrapper {
@@ -174,9 +155,9 @@
         </div>
     </div>
     <div id="main-content">
-        <div id="chat-box">
+        <div id="chat-box" style="white-space: pre-line;">
             {% for role, message in chat_history %}
-                <div><strong>{{ role }}:</strong> {{ message }}</div>
+                <div><strong>{{ role }}:</strong> {{ message.strip()}}</div>
             {% endfor %}
         </div>
         <form method="post">
